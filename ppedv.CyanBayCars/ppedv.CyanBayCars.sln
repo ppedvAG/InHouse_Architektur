@@ -5,6 +5,10 @@ VisualStudioVersion = 17.6.33626.354
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.CyanBayCars.Models", "ppedv.CyanBayCars.Models\ppedv.CyanBayCars.Models.csproj", "{363418E4-34EF-46F6-A36E-20BF21F1D42F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.CyanBayCars.Data.EfCore", "ppedv.CyanBayCars.Data.EfCore\ppedv.CyanBayCars.Data.EfCore.csproj", "{724ACBE6-FF8F-4C0F-ADFE-5EB85F6A2BE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.CyanBayCars.Data.EfCore.Tests", "ppedv.CyanBayCars.Data.EfCore.Tests\ppedv.CyanBayCars.Data.EfCore.Tests.csproj", "{2ADF56AD-12C0-4E7E-9FEC-2A3991FE77B6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{363418E4-34EF-46F6-A36E-20BF21F1D42F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{363418E4-34EF-46F6-A36E-20BF21F1D42F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{363418E4-34EF-46F6-A36E-20BF21F1D42F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{724ACBE6-FF8F-4C0F-ADFE-5EB85F6A2BE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{724ACBE6-FF8F-4C0F-ADFE-5EB85F6A2BE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{724ACBE6-FF8F-4C0F-ADFE-5EB85F6A2BE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{724ACBE6-FF8F-4C0F-ADFE-5EB85F6A2BE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2ADF56AD-12C0-4E7E-9FEC-2A3991FE77B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2ADF56AD-12C0-4E7E-9FEC-2A3991FE77B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2ADF56AD-12C0-4E7E-9FEC-2A3991FE77B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2ADF56AD-12C0-4E7E-9FEC-2A3991FE77B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
