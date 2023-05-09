@@ -106,6 +106,8 @@ namespace ppedv.CyanBayCars.Data.EfCore.Tests
                 var loadedCar = con.Cars.Find(car.Id);
 
                 loadedCar.Model.Should().Be(newModel);
+
+                loadedCar.Rents.Should().BeEmpty();
             }
         }
 
@@ -164,6 +166,11 @@ namespace ppedv.CyanBayCars.Data.EfCore.Tests
             {
                 var loadedCar = con.Cars.Find(car.Id);
                 loadedCar.Should().BeEquivalentTo(car, x => x.IgnoringCyclicReferences());
+
+                //loadedCar.Rents.Should().AllSatisfy(x => x.StartKm.Should().Be(12));
+
+                //List<Rent> rr = new List<Rent>();
+                loadedCar.Rents.Should().BeEquivalentTo(car.Rents, x => x.IgnoringCyclicReferences());
             }
         }
     }
