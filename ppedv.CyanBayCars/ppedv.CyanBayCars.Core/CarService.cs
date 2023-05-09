@@ -9,17 +9,14 @@ namespace ppedv.CyanBayCars.Core
 
         public CarService(IRepository repository)
         {
+            ArgumentNullException.ThrowIfNull(repository, nameof(repository));
+
             this.repository = repository;
         }
 
-        public IEnumerable<Car> GetAllAvailableCars()
+        public IReadOnlyList<Car> GetAllAvailableCars()
         {
-            return repository.GetAll<Car>().Where(IsCarAvailable);
-        }
-
-        public static bool IsCarAvailable(Car car)
-        {
-            return car.Rents.All(x => x.EndDate != null);
+            return repository.Query<Car>().Where(car => car.Rents.All(x => x.EndDate != null)).ToList();
         }
     }
 }
