@@ -1,3 +1,4 @@
+using FluentAssertions;
 using ppedv.CyanBayCars.Models;
 
 namespace ppedv.CyanBayCars.Data.EfCore.Tests
@@ -15,7 +16,7 @@ namespace ppedv.CyanBayCars.Data.EfCore.Tests
 
             var result = con.Database.EnsureCreated();
 
-            Assert.True(result);
+            result.Should().BeTrue();
         }
 
         [Fact]
@@ -36,7 +37,7 @@ namespace ppedv.CyanBayCars.Data.EfCore.Tests
             con.Cars.Add(car);
             int affRows = con.SaveChanges();
 
-            Assert.Equal(1, affRows);
+            affRows.Should().Be(1);
         }
 
         [Fact]
@@ -62,8 +63,9 @@ namespace ppedv.CyanBayCars.Data.EfCore.Tests
             using (var con = new EfContext(conString))
             {
                 var loadedCar = con.Cars.Find(car.Id);
-                Assert.NotNull(loadedCar);
-                Assert.Equal(car.Model, loadedCar.Model);
+                loadedCar.Should().NotBeNull();
+                loadedCar.Model.Should().Be(car.Model);
+                loadedCar.PS.Should().BeInRange(299, 700);
             }
         }
 
@@ -99,7 +101,8 @@ namespace ppedv.CyanBayCars.Data.EfCore.Tests
             using (var con = new EfContext(conString))
             {
                 var loadedCar = con.Cars.Find(car.Id);
-                Assert.Equal(newModel, loadedCar.Model);
+
+                loadedCar.Model.Should().Be(newModel);
             }
         }
 
@@ -133,7 +136,8 @@ namespace ppedv.CyanBayCars.Data.EfCore.Tests
             using (var con = new EfContext(conString))
             {
                 var loadedCar = con.Cars.Find(car.Id);
-                Assert.Null(loadedCar);
+
+                loadedCar.Should().BeNull();
             }
         }
     }
