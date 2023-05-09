@@ -1,3 +1,4 @@
+using AutoFixture;
 using FluentAssertions;
 using ppedv.CyanBayCars.Models;
 
@@ -140,5 +141,24 @@ namespace ppedv.CyanBayCars.Data.EfCore.Tests
                 loadedCar.Should().BeNull();
             }
         }
+
+        [Fact]
+        public void Can_create_and_read_car_with_AutoFixture()
+        {
+            var fix = new Fixture();
+
+            fix.Behaviors.Add(new OmitOnRecursionBehavior());
+            var car = fix.Build<Car>().Without(x => x.Color).Create();
+
+            using (var con = new EfContext(conString))
+            {
+                con.Database.EnsureCreated();
+                con.Cars.Add(car);
+                con.SaveChanges();
+            }
+
+        }
     }
+
+
 }
