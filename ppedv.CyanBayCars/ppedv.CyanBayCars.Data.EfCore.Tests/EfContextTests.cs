@@ -1,6 +1,8 @@
 using AutoFixture;
+using AutoFixture.Kernel;
 using FluentAssertions;
 using ppedv.CyanBayCars.Models;
+using System.Reflection;
 
 namespace ppedv.CyanBayCars.Data.EfCore.Tests
 {
@@ -148,13 +150,14 @@ namespace ppedv.CyanBayCars.Data.EfCore.Tests
             var fix = new Fixture();
 
             fix.Behaviors.Add(new OmitOnRecursionBehavior());
+            fix.Customizations.Add(new PropertyNameOmitter(nameof(Entity.Id)));
             var car = fix.Build<Car>().Without(x => x.Color).Create();
 
             using (var con = new EfContext(conString))
             {
                 con.Database.EnsureCreated();
                 con.Cars.Add(car);
-                con.SaveChanges();
+                int result = con.SaveChanges();
             }
 
         }
