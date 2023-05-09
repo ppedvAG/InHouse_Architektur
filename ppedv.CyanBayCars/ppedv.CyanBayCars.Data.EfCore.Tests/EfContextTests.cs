@@ -157,9 +157,14 @@ namespace ppedv.CyanBayCars.Data.EfCore.Tests
             {
                 con.Database.EnsureCreated();
                 con.Cars.Add(car);
-                int result = con.SaveChanges();
+                con.SaveChanges();
             }
 
+            using (var con = new EfContext(conString))
+            {
+                var loadedCar = con.Cars.Find(car.Id);
+                loadedCar.Should().BeEquivalentTo(car, x => x.IgnoringCyclicReferences());
+            }
         }
     }
 
