@@ -1,0 +1,19 @@
+﻿<Zeug xmlns:möbel="http://ppedv.de/2023/Sitzmöbel/">
+
+	<Bank xmlns="http://ppedv.de/Cars/2023/">
+		<Nummer>82376823476</Nummer>
+		<BLZ>82376823476</BLZ>
+	</Bank>
+
+	<Bank xmlns="http://ppedv.de/2023/Sitzmöbel/">
+		<Sitze>5</Sitze>
+	</Bank>
+
+	<möbel:Bank>
+		<Sitze>4</Sitze>
+	</möbel:Bank>
+	
+	
+	
+</Zeug>
+

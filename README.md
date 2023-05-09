@@ -16,3 +16,4 @@ https://www.electronjs.org
 
 
 https://stryker-mutator.io/docs/stryker-net/introduction/  
+https://github.com/minimaxir/big-list-of-naughty-strings/  
