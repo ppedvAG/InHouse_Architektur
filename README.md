@@ -13,3 +13,6 @@ https://autofixture.github.io
 https://platform.uno  
 https://www.avaloniaui.net  
 https://www.electronjs.org  
+
+
+https://stryker-mutator.io/docs/stryker-net/introduction/  
