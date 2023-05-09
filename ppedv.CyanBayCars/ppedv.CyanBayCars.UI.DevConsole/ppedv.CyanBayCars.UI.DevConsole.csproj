@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="7.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ppedv.CyanBayCars.Core\ppedv.CyanBayCars.Core.csproj" />
+    <ProjectReference Include="..\ppedv.CyanBayCars.Data.EfCore\ppedv.CyanBayCars.Data.EfCore.csproj" />
+    <ProjectReference Include="..\ppedv.CyanBayCars.Models\ppedv.CyanBayCars.Models.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -17,7 +17,7 @@ namespace ppedv.CyanBayCars.Core
             return repository.GetAll<Car>().Where(IsCarAvailable);
         }
 
-        public bool IsCarAvailable(Car car)
+        public static bool IsCarAvailable(Car car)
         {
             return car.Rents.All(x => x.EndDate != null);
         }
