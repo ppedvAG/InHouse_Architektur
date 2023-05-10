@@ -3,10 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:ppedv.CyanBayCars.UI.WPF.Views"
+             xmlns:local="clr-namespace:ppedv.CyanBayCars.UI.WPF.Views" 
+             xmlns:viewmodels="clr-namespace:ppedv.CyanBayCars.UI.WPF.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-
+    <UserControl.DataContext>
+        <viewmodels:CarViewModel/>
+    </UserControl.DataContext>
     <DockPanel>
         <WrapPanel DockPanel.Dock="Top">
             <Button>Laden</Button>
@@ -20,7 +23,8 @@
                 <ColumnDefinition Width="2"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <DataGrid/>
+            <DataGrid ItemsSource="{Binding CarList}"
+                      SelectedItem="{Binding SelectedCar}"/>
             <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch"/>
             <Grid Grid.Column="2">
                 <Grid.ColumnDefinitions>
@@ -38,19 +42,23 @@
                 </Grid.RowDefinitions>
 
                 <Label>Model</Label>
-                <TextBox Grid.Column="1"/>
+                <TextBox Text="{Binding SelectedCar.Model}" Grid.Column="1"/>
                 <Label Grid.Row="1">Manufacturer</Label>
-                <TextBox Grid.Row="1" Grid.Column="1"/>
+                <TextBox Text="{Binding SelectedCar.Manufacturer}" Grid.Row="1" Grid.Column="1"/>
                 <Label Grid.Row="2">CarType</Label>
-                <TextBox Grid.Row="2" Grid.Column="1"/>
+                <TextBox Text="{Binding SelectedCar.CarType}" Grid.Row="2" Grid.Column="1"/>
                 <Label Grid.Row="3">Farbe</Label>
-                <TextBox Grid.Row="3" Grid.Column="1"/>
+                <TextBox Text="{Binding SelectedCar.Color}" Grid.Row="3" Grid.Column="1"/>
                 <Label Grid.Row="4">Sitze</Label>
-                <TextBox Grid.Row="4" Grid.Column="1"/>
-                <Label Grid.Row="5">PS</Label>
-                <TextBox Grid.Row="5" Grid.Column="1"/>
+                <TextBox Text="{Binding SelectedCar.Seats}" Grid.Row="4" Grid.Column="1"/>
+                <StackPanel Grid.Row="5" Orientation="Horizontal">
+                    <Label>PS</Label>
+                    <TextBlock Text="{Binding KW,StringFormat=' ({0})'}"/>
+                </StackPanel>
+                <TextBox Text="{Binding SelectedCar.PS}" Grid.Row="5" Grid.Column="1"/>
                 <GroupBox Grid.Row="6" Grid.ColumnSpan="2" Header="Rents">
-                    <ListBox/>
+                    <ListBox ItemsSource="{Binding SelectedCar.Rents}"
+                             DisplayMemberPath="BookDate" />
                 </GroupBox>
             </Grid>
         </Grid>

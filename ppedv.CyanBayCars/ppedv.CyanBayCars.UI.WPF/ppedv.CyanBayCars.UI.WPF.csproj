@@ -8,12 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModels\" />
+    <PackageReference Include="AdonisUI" Version="1.17.1" />
+    <PackageReference Include="AdonisUI.ClassicTheme" Version="1.17.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AdonisUI" Version="1.17.1" />
-    <PackageReference Include="AdonisUI.ClassicTheme" Version="1.17.1" />
+    <ProjectReference Include="..\ppedv.CyanBayCars.Core\ppedv.CyanBayCars.Core.csproj" />
+    <ProjectReference Include="..\ppedv.CyanBayCars.Data.EfCore\ppedv.CyanBayCars.Data.EfCore.csproj" />
+    <ProjectReference Include="..\ppedv.CyanBayCars.Models\ppedv.CyanBayCars.Models.csproj" />
   </ItemGroup>
 
 </Project>
