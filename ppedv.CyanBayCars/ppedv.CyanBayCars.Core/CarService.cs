@@ -5,18 +5,19 @@ namespace ppedv.CyanBayCars.Core
 {
     public class CarService
     {
-        private readonly IRepository repository;
+        private readonly IUnitOfWork unitOfWork;
 
-        public CarService(IRepository repository)
+        public CarService(IUnitOfWork unitOfWork)
         {
-            ArgumentNullException.ThrowIfNull(repository, nameof(repository));
+            ArgumentNullException.ThrowIfNull(unitOfWork, nameof(unitOfWork));
 
-            this.repository = repository;
+            this.unitOfWork = unitOfWork;
         }
+
 
         public IReadOnlyList<Car> GetAllAvailableCars()
         {
-            return repository.Query<Car>().Where(car => car.Rents.All(x => x.EndDate != null)).ToList();
+            return unitOfWork.CarRepo.Query().Where(car => car.Rents.All(x => x.EndDate != null)).ToList();
         }
     }
 }

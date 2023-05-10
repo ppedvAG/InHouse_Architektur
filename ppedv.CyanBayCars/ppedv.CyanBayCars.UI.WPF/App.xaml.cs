@@ -37,7 +37,7 @@ namespace ppedv.CyanBayCars.UI.WPF
             var services = new ServiceCollection();
 
             var conString = "Server=(localdb)\\mssqllocaldb;Database=CyanBayCars_Dev;Trusted_Connection=true;";
-            services.AddSingleton<IRepository, EfRepository>(x => new EfRepository(conString));
+            services.AddSingleton<IUnitOfWork, EfUnitOfWork>(x => new EfUnitOfWork(conString));
             services.AddSingleton<CarViewModel>();
 
             return services.BuildServiceProvider();

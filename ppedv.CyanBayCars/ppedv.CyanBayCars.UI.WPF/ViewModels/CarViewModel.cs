@@ -1,11 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using ppedv.CyanBayCars.Data.EfCore;
 using ppedv.CyanBayCars.Models;
 using ppedv.CyanBayCars.Models.Contracts;
-using System;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Windows.Input;
 
 namespace ppedv.CyanBayCars.UI.WPF.ViewModels
@@ -32,7 +29,7 @@ namespace ppedv.CyanBayCars.UI.WPF.ViewModels
         public ICommand DeleteCommand { get; set; }
         public ICommand LoadCommand { get; set; }
 
-        private IRepository repo;
+        private IUnitOfWork unitOfWork;
         private Car selectedCar;
 
         public string KW
@@ -45,13 +42,13 @@ namespace ppedv.CyanBayCars.UI.WPF.ViewModels
             }
         }
 
-        public CarViewModel(IRepository repo)
+        public CarViewModel(IUnitOfWork unitOfWork )
         {
-            this.repo = repo;
-            CarList = new ObservableCollection<Car>(repo.Query<Car>());
+            this.unitOfWork = unitOfWork;
+            CarList = new ObservableCollection<Car>(unitOfWork.CarRepo.Query());
             //CarList = new ObservableCollection<Car>();
 
-            SaveCommand = new RelayCommand(() => repo.SaveChanges());
+            SaveCommand = new RelayCommand(() => unitOfWork.SaveChanges());
 
             NewCommand = new RelayCommand(UserWantsToAddNewCar);
         }
@@ -59,7 +56,7 @@ namespace ppedv.CyanBayCars.UI.WPF.ViewModels
         private void UserWantsToAddNewCar()
         {
             var newCar = new Car() { Model="NEU", Color="Gelb" };
-            repo.Add(newCar);
+            unitOfWork.CarRepo.Add(newCar);
             CarList.Add(newCar);
             SelectedCar = newCar;
         }

@@ -21,11 +21,11 @@ string conString = "Server=(localdb)\\mssqllocaldb;Database=CyanBayCars_Dev;Trus
 
 //DI per AutoFac
 var builder = new ContainerBuilder();
-builder.RegisterType<EfRepository>().AsImplementedInterfaces()
+builder.RegisterType<EfUnitOfWork>().AsImplementedInterfaces()
                                     .WithParameter("conString", conString)
                                     .SingleInstance();
 var container = builder.Build();
-var core = new CarService(container.Resolve<IRepository>());
+var core = new CarService(container.Resolve<IUnitOfWork>());
 
 foreach (var car in core.GetAllAvailableCars())
 {
