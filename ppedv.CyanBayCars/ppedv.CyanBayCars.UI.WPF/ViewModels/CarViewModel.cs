@@ -1,12 +1,16 @@
-﻿using ppedv.CyanBayCars.Data.EfCore;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using ppedv.CyanBayCars.Data.EfCore;
 using ppedv.CyanBayCars.Models;
 using ppedv.CyanBayCars.Models.Contracts;
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Windows.Input;
 
 namespace ppedv.CyanBayCars.UI.WPF.ViewModels
 {
-    public class CarViewModel : INotifyPropertyChanged
+    public class CarViewModel : ObservableObject
     {
         public ObservableCollection<Car> CarList { get; set; }
 
@@ -16,15 +20,20 @@ namespace ppedv.CyanBayCars.UI.WPF.ViewModels
             set
             {
                 selectedCar = value;
-                PropertyChanged?.Invoke(this,new PropertyChangedEventArgs(nameof(SelectedCar)));
-                PropertyChanged?.Invoke(this,new PropertyChangedEventArgs(nameof(KW)));
+                OnPropertyChanged(nameof(SelectedCar));
+                OnPropertyChanged(nameof(KW));
+                //PropertyChanged?.Invoke(this,new PropertyChangedEventArgs(nameof(SelectedCar)));
+                //PropertyChanged?.Invoke(this,new PropertyChangedEventArgs(nameof(KW)));
             }
         }
 
+        public ICommand SaveCommand { get; set; }
+        public ICommand NewCommand { get; set; }
+        public ICommand DeleteCommand { get; set; }
+        public ICommand LoadCommand { get; set; }
+
         private IRepository repo;
         private Car selectedCar;
-
-        public event PropertyChangedEventHandler? PropertyChanged;
 
         public string KW
         {
@@ -44,6 +53,18 @@ namespace ppedv.CyanBayCars.UI.WPF.ViewModels
         {
             this.repo = repo;
             CarList = new ObservableCollection<Car>(repo.Query<Car>());
+
+            SaveCommand = new RelayCommand(() => repo.SaveChanges());
+
+            NewCommand = new RelayCommand(UserWantsToAddNewCar);
+        }
+
+        private void UserWantsToAddNewCar()
+        {
+            var newCar = new Car() { Model="NEU", Color="Gelb" };
+            repo.Add(newCar);
+            CarList.Add(newCar);
+            SelectedCar = newCar;
         }
     }
 }

@@ -11,11 +11,11 @@
         <viewmodels:CarViewModel/>
     </UserControl.DataContext>
     <DockPanel>
-        <WrapPanel DockPanel.Dock="Top">
-            <Button>Laden</Button>
-            <Button>Speichern</Button>
-            <Button>Neu</Button>
-            <Button>Löschen</Button>
+        <WrapPanel DockPanel.Dock="Top" Margin="4">
+            <Button Command="{Binding LoadCommand}">Laden</Button>
+            <Button Command="{Binding SaveCommand}">Speichern</Button>
+            <Button Command="{Binding NewCommand}">Neu</Button>
+            <Button Command="{Binding DeleteCommand}">Löschen</Button>
         </WrapPanel>
         <Grid>
             <Grid.ColumnDefinitions>
