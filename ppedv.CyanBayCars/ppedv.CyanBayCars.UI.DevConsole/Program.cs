@@ -1,7 +1,9 @@
 ﻿using Autofac;
 using ppedv.CyanBayCars.Core;
 using ppedv.CyanBayCars.Data.EfCore;
+using ppedv.CyanBayCars.Models;
 using ppedv.CyanBayCars.Models.Contracts;
+using System.Diagnostics;
 using System.Reflection;
 
 Console.WriteLine("Hello, World!");
@@ -24,13 +26,28 @@ var builder = new ContainerBuilder();
 builder.RegisterType<EfUnitOfWork>().AsImplementedInterfaces()
                                     .WithParameter("conString", conString)
                                     .SingleInstance();
+builder.RegisterType<CarService>().AsImplementedInterfaces();
+builder.RegisterType<RentService>().AsImplementedInterfaces();
+
 var container = builder.Build();
-var core = new CarService(container.Resolve<IUnitOfWork>());
+
+var carService = container.Resolve<ICarService>();
+var rentService = container.Resolve<IRentService>();
 
 var uow = container.Resolve<IUnitOfWork>();
 var specialCars = uow.CarRepo.GetAllCarsThatHaveSpecialNeeds();
 
-foreach (var car in core.GetAllAvailableCars())
+
+
+foreach (var car in carService.GetAllAvailableCars())
 {
     Console.WriteLine($"{car.Manufacturer} {car.Model}");
 }
+
+Debugger.Break();
+
+var toRent = carService.GetAllAvailableCars().FirstOrDefault();
+var cust = new Customer() { Name = "Fred" };
+var newRent = new Rent() { Car = toRent, Customer = cust, StartKm = 8723 };
+rentService.StartRent(newRent);
+

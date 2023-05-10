@@ -3,7 +3,7 @@ using ppedv.CyanBayCars.Models.Contracts;
 
 namespace ppedv.CyanBayCars.Core
 {
-    public class CarService
+    public class CarService : ICarService
     {
         private readonly IUnitOfWork unitOfWork;
 
