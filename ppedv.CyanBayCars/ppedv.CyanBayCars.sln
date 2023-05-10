@@ -9,13 +9,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppedv.CyanBayCars.Data.EfCo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppedv.CyanBayCars.Data.EfCore.Tests", "ppedv.CyanBayCars.Data.EfCore.Tests\ppedv.CyanBayCars.Data.EfCore.Tests.csproj", "{2ADF56AD-12C0-4E7E-9FEC-2A3991FE77B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.CyanBayCars.Core", "ppedv.CyanBayCars.Core\ppedv.CyanBayCars.Core.csproj", "{A08E239B-AB8D-4B0A-ACB5-8B263DEC1004}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppedv.CyanBayCars.Core", "ppedv.CyanBayCars.Core\ppedv.CyanBayCars.Core.csproj", "{A08E239B-AB8D-4B0A-ACB5-8B263DEC1004}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.CyanBayCars.UI.DevConsole", "ppedv.CyanBayCars.UI.DevConsole\ppedv.CyanBayCars.UI.DevConsole.csproj", "{FC83EC60-CF5B-4EB2-BBA5-2BEBA0366208}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppedv.CyanBayCars.UI.DevConsole", "ppedv.CyanBayCars.UI.DevConsole\ppedv.CyanBayCars.UI.DevConsole.csproj", "{FC83EC60-CF5B-4EB2-BBA5-2BEBA0366208}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.CyanBayCars.Core.Tests", "ppedv.CyanBayCars.Core.Tests\ppedv.CyanBayCars.Core.Tests.csproj", "{6B1D2DAD-222A-43C9-9314-861488D66E5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppedv.CyanBayCars.Core.Tests", "ppedv.CyanBayCars.Core.Tests\ppedv.CyanBayCars.Core.Tests.csproj", "{6B1D2DAD-222A-43C9-9314-861488D66E5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.CyanBayCars.UI.WPF", "ppedv.CyanBayCars.UI.WPF\ppedv.CyanBayCars.UI.WPF.csproj", "{1141643B-6941-4EBB-87B8-24A272BE8BD6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppedv.CyanBayCars.UI.WPF", "ppedv.CyanBayCars.UI.WPF\ppedv.CyanBayCars.UI.WPF.csproj", "{1141643B-6941-4EBB-87B8-24A272BE8BD6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.CyanBayCars.UI.ASPMVC", "ppedv.CyanBayCars.UI.ASPMVC\ppedv.CyanBayCars.UI.ASPMVC.csproj", "{3039DB03-D973-460F-A831-B2ECEC471ED3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{1141643B-6941-4EBB-87B8-24A272BE8BD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1141643B-6941-4EBB-87B8-24A272BE8BD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1141643B-6941-4EBB-87B8-24A272BE8BD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3039DB03-D973-460F-A831-B2ECEC471ED3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3039DB03-D973-460F-A831-B2ECEC471ED3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3039DB03-D973-460F-A831-B2ECEC471ED3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3039DB03-D973-460F-A831-B2ECEC471ED3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
