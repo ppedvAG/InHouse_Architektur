@@ -12,7 +12,7 @@ namespace ppedv.CyanBayCars.Data.EfCore
 
         public IReadOnlyList<Car> GetAllCarsThatHaveSpecialNeeds()
         {
-            return context.Database.SqlQueryRaw<Car>($"SELECT * FROM Cars").ToList();
+            return context.Cars.FromSql($"SELECT * FROM Cars").ToList();
         }
     }
 }
