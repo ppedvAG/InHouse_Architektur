@@ -1,11 +1,12 @@
-﻿using ppedv.CyanBayCars.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using ppedv.CyanBayCars.Models;
 using ppedv.CyanBayCars.Models.Contracts;
 
 namespace ppedv.CyanBayCars.Data.EfCore
 {
     public class EfUnitOfWork : IUnitOfWork
     {
-        public IRepository<Car> CarRepo => new EfRepository<Car>(context);
+        public ICarRepository CarRepo => new EfCarRepository(context);
 
         public IRepository<Rent> RentRepo => new EfRepository<Rent>(context);
 
@@ -21,6 +22,18 @@ namespace ppedv.CyanBayCars.Data.EfCore
         public int SaveChanges()
         {
             return context.SaveChanges();
+        }
+    }
+
+    public class EfCarRepository : EfRepository<Car>, ICarRepository
+    {
+        public EfCarRepository(EfContext context) : base(context)
+        {
+        }
+
+        public IReadOnlyList<Car> GetAllCarsThatHaveSpecialNeeds()
+        {
+            return context.Database.SqlQueryRaw<Car>($"SELECT * FROM Cars").ToList();
         }
     }
 

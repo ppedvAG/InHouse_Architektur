@@ -18,7 +18,7 @@ namespace ppedv.CyanBayCars.Core.Tests
         [Fact]
         public void GetAllAvailableCars_no_cars_should_return_empty_list()
         {
-            var repoMock = new Mock<IRepository<Car>>();
+            var repoMock = new Mock<ICarRepository>();
             var uowMock = new Mock<IUnitOfWork>();
             uowMock.Setup(x => x.CarRepo).Returns(repoMock.Object);
             var carService = new CarService(uowMock.Object);
@@ -31,7 +31,7 @@ namespace ppedv.CyanBayCars.Core.Tests
         [Fact]
         public void GetAllAvailableCars_3_cars_3_open_rents_should_return_empty_list()
         {
-            var repoMock = new Mock<IRepository<Car>>();
+            var repoMock = new Mock<ICarRepository>();
             var uowMock = new Mock<IUnitOfWork>();
             uowMock.Setup(x => x.CarRepo).Returns(repoMock.Object);
             repoMock.Setup(x => x.Query()).Returns(() =>
@@ -68,7 +68,7 @@ namespace ppedv.CyanBayCars.Core.Tests
         [Fact]
         public void GetAllAvailableCars_3_cars_2_open_rent_should_return_correct_car_moq()
         {
-            var repoMock = new Mock<IRepository<Car>>();
+            var repoMock = new Mock<ICarRepository>();
             var uowMock = new Mock<IUnitOfWork>();
             uowMock.Setup(x => x.CarRepo).Returns(repoMock.Object);
             repoMock.Setup(x => x.Query()).Returns(() =>
@@ -101,7 +101,7 @@ namespace ppedv.CyanBayCars.Core.Tests
 
     class TestUnitOfWork : IUnitOfWork
     {
-        public IRepository<Car> CarRepo => new TestCarRepo();
+        public ICarRepository CarRepo => new CarTestRepo();
 
         public IRepository<Rent> RentRepo => throw new NotImplementedException();
 
@@ -113,7 +113,15 @@ namespace ppedv.CyanBayCars.Core.Tests
         }
     }
 
-    class TestCarRepo : IRepository<Car>
+    class CarTestRepo : TestRepo, ICarRepository
+    {
+        public IReadOnlyList<Car> GetAllCarsThatHaveSpecialNeeds()
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    class TestRepo : IRepository<Car>
     {
         public void Add(Car entity)
         {

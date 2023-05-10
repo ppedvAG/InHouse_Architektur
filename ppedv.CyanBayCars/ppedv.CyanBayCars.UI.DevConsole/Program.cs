@@ -27,6 +27,9 @@ builder.RegisterType<EfUnitOfWork>().AsImplementedInterfaces()
 var container = builder.Build();
 var core = new CarService(container.Resolve<IUnitOfWork>());
 
+var uow = container.Resolve<IUnitOfWork>();
+var specialCars = uow.CarRepo.GetAllCarsThatHaveSpecialNeeds();
+
 foreach (var car in core.GetAllAvailableCars())
 {
     Console.WriteLine($"{car.Manufacturer} {car.Model}");

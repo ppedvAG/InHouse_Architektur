@@ -9,9 +9,15 @@
         void Delete(T entity);
     }
 
+
+    public interface ICarRepository : IRepository<Car>
+    {
+        IReadOnlyList<Car> GetAllCarsThatHaveSpecialNeeds();
+    }
+
     public interface IUnitOfWork
     {
-        IRepository<Car> CarRepo { get; }
+        ICarRepository CarRepo { get; }
         IRepository<Rent> RentRepo { get; }
         IRepository<Customer> CustomerRepo { get; }
 
