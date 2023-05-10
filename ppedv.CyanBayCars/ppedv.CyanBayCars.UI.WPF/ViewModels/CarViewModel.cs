@@ -49,6 +49,7 @@ namespace ppedv.CyanBayCars.UI.WPF.ViewModels
         {
             this.repo = repo;
             CarList = new ObservableCollection<Car>(repo.Query<Car>());
+            //CarList = new ObservableCollection<Car>();
 
             SaveCommand = new RelayCommand(() => repo.SaveChanges());
 

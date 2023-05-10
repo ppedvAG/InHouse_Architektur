@@ -2,13 +2,7 @@
 using ppedv.CyanBayCars.Data.EfCore;
 using ppedv.CyanBayCars.Models.Contracts;
 using ppedv.CyanBayCars.UI.WPF.ViewModels;
-using ppedv.CyanBayCars.UI.WPF.Views;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace ppedv.CyanBayCars.UI.WPF
@@ -43,7 +37,7 @@ namespace ppedv.CyanBayCars.UI.WPF
             var services = new ServiceCollection();
 
             var conString = "Server=(localdb)\\mssqllocaldb;Database=CyanBayCars_Dev;Trusted_Connection=true;";
-            services.AddSingleton<IRepository, EfRepository>(x=> new EfRepository(conString));
+            services.AddSingleton<IRepository, EfRepository>(x => new EfRepository(conString));
             services.AddSingleton<CarViewModel>();
 
             return services.BuildServiceProvider();
