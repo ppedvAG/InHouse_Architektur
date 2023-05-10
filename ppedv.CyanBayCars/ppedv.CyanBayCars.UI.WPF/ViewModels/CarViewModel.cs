@@ -45,10 +45,6 @@ namespace ppedv.CyanBayCars.UI.WPF.ViewModels
             }
         }
 
-        //todo kill it
-        public CarViewModel() : this(new EfRepository("Server=(localdb)\\mssqllocaldb;Database=CyanBayCars_Dev;Trusted_Connection=true;"))
-        { }
-
         public CarViewModel(IRepository repo)
         {
             this.repo = repo;
